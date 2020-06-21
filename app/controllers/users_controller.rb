@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  before_action :set_user_id, only: [:analysis_new, :analysis_create, :analysis_show, :analysis_edit, :analysis_update]
+  before_action :set_user_id_and_analysis, only: [ :analysis_show, :analysis_edit, :analysis_update]
 
   # GET /users
   # GET /users.json
@@ -16,27 +16,9 @@ class UsersController < ApplicationController
   # GET /users/new
   def new
     @user = User.new
-    @analysis = @user.build_analysis(num1:"0", num2:"0")
-    @analysis.save
-  end
-
-  def analysis_new
     @analysis = @user.build_analysis
   end
 
-  def analysis_create
-    @analysis = @user.build_analysis(analysis_params)
-
-    respond_to do |format|
-      if @analysis.save
-        format.html { redirect_to user_analysis_show_path(@user), notice: 'Analysis was successfully created.' }
-        format.json { render :show, status: :created, location: @user }
-      else
-        format.html { render :analysis_new }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
-    end
-  end
 
   def analysis_show
     @analysis = @user.analysis
@@ -67,9 +49,10 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(user_params)
+    @analysis = @user.build_analysis(num1:"0", num2:"0")
 
     respond_to do |format|
-      if @user.save
+      if @user.save && @analysis.save
         format.html { redirect_to @user, notice: 'User was successfully created.' }
         format.json { render :show, status: :created, location: @user }
       else
@@ -109,8 +92,9 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
     end
 
-    def set_user_id
+    def set_user_id_and_analysis
       @user = User.find(params[:user_id])
+      @analysis = @user.analysis
     end
 
 
