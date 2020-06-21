@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Num1:</strong>
+  <%= @analysis.num1 %>
+</p>
+
+<p>
+  <strong>Num2:</strong>
+  <%= @analysis.num2 %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @analysis.user %>
+</p>
+
+<%= link_to 'Edit', edit_analysis_path(@analysis) %> |
+<%= link_to 'Back', analyses_path %>
