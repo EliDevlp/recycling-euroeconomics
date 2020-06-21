@@ -16,6 +16,8 @@ class UsersController < ApplicationController
   # GET /users/new
   def new
     @user = User.new
+    @analysis = @user.build_analysis(num1:"0", num2:"0")
+    @analysis.save
   end
 
   def analysis_new
