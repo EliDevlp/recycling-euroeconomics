@@ -3,12 +3,11 @@
 
 
     <% if logged_in %>
-
-      <li><%= link_to("#{current_user.name.capitalize}", user_path(current_user)) %></li>
-      <li><%= link_to("Analysis", user_analysis_show_path(current_user)) %></li>
-      <li><%= link_to "Log out", logout_path, method: :delete %></li>
-    <% else %>
-      <li><%= link_to("Login", login_path)%></li>
+      <ul>
+        <li><%= link_to("#{current_user.name.titlecase}", user_path(current_user)) %></li>
+        <li><%= link_to("Analysis", user_analysis_show_path(current_user)) %></li>
+        <li style="float: right"><%= link_to "Log out", logout_path, method: :delete, class: "acitve" %></li>
+      </ul>
     <% end %>
 
 

@@ -2,7 +2,7 @@
 
 <p>
   <strong>Name:</strong>
-  <%= @user.name.capitalize %>
+  <%= @user.name.titlecase %>
 </p>
 
 <%= link_to 'Edit', edit_user_path(@user) %>

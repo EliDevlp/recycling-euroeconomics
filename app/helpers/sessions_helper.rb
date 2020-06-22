@@ -9,6 +9,12 @@ module SessionsHelper
     end
   end
 
+  def login_checker
+    a = params[:action]
+    b = params[:controller]
+    a == "new" && b == "sessions"
+  end
+
 
   def logged_in
     !current_user.nil?
