@@ -2,9 +2,8 @@
 
 <p>
   <strong>Name:</strong>
-  <%= @user.name %>
+  <%= @user.name.capitalize %>
 </p>
 
-<%= link_to 'Analysis', user_analysis_show_path(@user) %> |
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<%= link_to 'Edit', edit_user_path(@user) %>
+

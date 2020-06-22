@@ -1,9 +1,8 @@
 
-<%= @analysis.num1 %><br>
+number 1:  <b><%= @analysis.num1 %></b><br>
 
-<%= @analysis.num2 %><br>
+number 2:  <b><%= @analysis.num2 %></b><br>
 
-<%= calculate(@analysis.num1, @analysis.num2) %>
+result:  <b><%= calculate(@analysis.num1, @analysis.num2) %></b><br>
 
 <%= link_to "Edit", user_analysis_edit_path %>
-<%= link_to "back", user_path(@user) %>
