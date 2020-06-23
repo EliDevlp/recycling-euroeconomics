@@ -1,7 +1,7 @@
 class BinsController < ApplicationController
   def new
-    @analysis = @user.analysis
-    @bin = @analysis.build_bin
+    @user = User.find(params[:user_id])
+    @bin = @user.bins.build
 
       respond_to do |format|
         format.html
@@ -10,20 +10,24 @@ class BinsController < ApplicationController
   end
 
   def create
-    @analysis = @user.analysis
-    @bin = @analysis.build_bin(bin_params)
-  end
+    @user = User.find(params[:user_id])
+    @bin = @user.bins.build(bin_params)
 
-  def index
     respond_to do |format|
-      format.html
-      format.js
+      if @bin.save
+        format.html { redirect_to user_analysis_show_path(@user) }
+        flash[:success] = "bins were successfully created."
+      else
+        format.html { render :new }
+        format.json { render json: @bin.errors, status: :unprocessable_entity }
+      end
     end
   end
+
 
   private
 
   def bin_params
-    params.require(:bin).permit(:colour, :quantity, :analysis_id)
+    params.require(:bin).permit(:colour, :quantity, :user_id)
   end
 end

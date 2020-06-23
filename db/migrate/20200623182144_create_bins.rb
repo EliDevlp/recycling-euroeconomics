@@ -3,7 +3,7 @@ class CreateBins < ActiveRecord::Migration[5.2]
     create_table :bins do |t|
       t.string :colour
       t.integer :quantity
-      t.references :analysis, foreign_key: true
+      t.references :user, foreign_key: true
 
       t.timestamps
     end

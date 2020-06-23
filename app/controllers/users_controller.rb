@@ -22,6 +22,7 @@ class UsersController < ApplicationController
 
   def analysis_show
     @analysis = @user.analysis
+    @bins = @user.bins
   end
 
   def analysis_edit

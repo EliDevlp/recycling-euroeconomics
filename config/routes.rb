@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-  get '/new_bin', to: "bins#new"
-  get "/bin_index", to: "bins#index"
   root "sessions#new"
   post '/', to: "sessions#create"
   delete '/logout', to: "sessions#destroy"
@@ -10,8 +8,11 @@ Rails.application.routes.draw do
     get "/analysis_show", to: "users#analysis_show"
     get "/analysis_edit", to: "users#analysis_edit"
     patch "/analysis_edit", to: "users#analysis_update"
+    get "bins/new"
+    post "bins/new", to: "bins#create"
   end
   get "/signup", to: "users#new"
+
 
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
