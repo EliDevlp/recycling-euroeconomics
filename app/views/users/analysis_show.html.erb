@@ -5,6 +5,8 @@ number 2:  <b><%= @analysis.num2 %></b><br>
 
 result:  <b><%= calculate(@analysis.num1, @analysis.num2) %></b><br>
 
+
+result:  <b><%= calculate(@bins.find(1).quantity, @bins.find(2).quantity) %></b>
 <h2>bins</h2>
 
 <table>
@@ -21,7 +23,7 @@ result:  <b><%= calculate(@analysis.num1, @analysis.num2) %></b><br>
     <tr>
       <td><%= bin.colour %></td>
       <td><%= bin.quantity %></td>
-      <td><%= link_to 'Edit', "#" %></td>
+      <td><%= link_to 'Edit', edit_user_bin_path(@user, bin) %></td>
       <td><%= link_to 'Destroy', '#' %></td>
     </tr>
   <% end %>
@@ -30,6 +32,4 @@ result:  <b><%= calculate(@analysis.num1, @analysis.num2) %></b><br>
 
 
 
-
-<%= link_to "new", user_bins_new_path %>
 <%= link_to "Edit", user_analysis_edit_path %>

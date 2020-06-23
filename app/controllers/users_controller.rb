@@ -17,6 +17,11 @@ class UsersController < ApplicationController
   def new
     @user = User.new
     @analysis = @user.build_analysis
+    @user.bins.build
+    @user.bins.build
+    @user.bins.build
+    @user.bins.build
+
   end
 
 
@@ -52,7 +57,10 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     @analysis = @user.build_analysis(num1:"0", num2:"0")
-
+    @user.bins.build(colour: "red", quantity: 0)
+    @user.bins.build(colour: "green", quantity: 0)
+    @user.bins.build(colour: "blue", quantity: 0)
+    @user.bins.build(colour: "yellow", quantity: 0)
 
     respond_to do |format|
       if @user.save && @analysis.save

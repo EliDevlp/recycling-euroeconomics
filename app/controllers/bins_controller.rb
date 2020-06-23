@@ -1,24 +1,21 @@
 class BinsController < ApplicationController
-  def new
-    @user = User.find(params[:user_id])
-    @bin = @user.bins.build
 
-      respond_to do |format|
-        format.html
-        format.js
-      end
+
+  def edit
+    @user = User.find(params[:user_id])
+    @bin = @user.bins.find(params[:id])
   end
 
-  def create
+  def update
     @user = User.find(params[:user_id])
-    @bin = @user.bins.build(bin_params)
+    @bin = @user.bins.find(params[:id])
 
     respond_to do |format|
-      if @bin.save
+      if @bin.update(bin_params)
         format.html { redirect_to user_analysis_show_path(@user) }
-        flash[:success] = "bins were successfully created."
+        flash[:success] = "bins were successfully updated."
       else
-        format.html { render :new }
+        format.html { render :edit }
         format.json { render json: @bin.errors, status: :unprocessable_entity }
       end
     end
