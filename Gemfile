@@ -29,7 +29,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'jquery-rails'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
-gem 'bootstrap', '~> 4.0'
+gem 'bootstrap', '~> 4.3'
 
 gem 'popper_js', '~> 1.9', '>= 1.9.9'
 # Use Capistrano for deployment
