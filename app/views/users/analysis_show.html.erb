@@ -5,4 +5,14 @@ number 2:  <b><%= @analysis.num2 %></b><br>
 
 result:  <b><%= calculate(@analysis.num1, @analysis.num2) %></b><br>
 
+
+
+
+<%= link_to 'Add bins', new_bin_path,  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'btn btn-primary btn-lg'}  %>
+<div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content"></div>
+  </div>
+</div>
+
 <%= link_to "Edit", user_analysis_edit_path %>

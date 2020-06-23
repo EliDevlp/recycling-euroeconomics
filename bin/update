@@ -1,4 +1,4 @@
-#!/usr/bin/env ruby
+#!/usr/bins/env ruby
 require 'fileutils'
 include FileUtils
 
@@ -18,14 +18,14 @@ chdir APP_ROOT do
   system('bundle check') || system!('bundle install')
 
   # Install JavaScript dependencies if using Yarn
-  # system('bin/yarn')
+  # system('bins/yarn')
 
   puts "\n== Updating database =="
-  system! 'bin/rails db:migrate'
+  system! 'bins/rails db:migrate'
 
   puts "\n== Removing old logs and tempfiles =="
-  system! 'bin/rails log:clear tmp:clear'
+  system! 'bins/rails log:clear tmp:clear'
 
   puts "\n== Restarting application server =="
-  system! 'bin/rails restart'
+  system! 'bins/rails restart'
 end

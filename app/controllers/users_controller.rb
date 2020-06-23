@@ -32,7 +32,8 @@ class UsersController < ApplicationController
     @analysis = @user.analysis
     respond_to do |format|
       if @analysis.update(analysis_params)
-        format.html { redirect_to user_analysis_show_path(@user), notice: 'User was successfully updated.' }
+        format.html { redirect_to user_analysis_show_path(@user) }
+        flash[:success] = "User was successfully updated."
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :analysis_edit }
@@ -51,10 +52,13 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     @analysis = @user.build_analysis(num1:"0", num2:"0")
 
+
     respond_to do |format|
       if @user.save && @analysis.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
+        format.html { redirect_to @user }
+        flash[:success] = "User was successfully created."
         format.json { render :show, status: :created, location: @user }
+        log_in(@user)
       else
         format.html { render :new }
         format.json { render json: @user.errors, status: :unprocessable_entity }
@@ -107,4 +111,6 @@ class UsersController < ApplicationController
     def analysis_params
       params.require(:analysis).permit(:num1, :num2, :user_id)
     end
+
+
 end

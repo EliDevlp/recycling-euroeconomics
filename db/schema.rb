@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_22_151107) do
+ActiveRecord::Schema.define(version: 2020_06_23_182144) do
 
   create_table "analyses", force: :cascade do |t|
     t.integer "num1"
@@ -19,6 +19,15 @@ ActiveRecord::Schema.define(version: 2020_06_22_151107) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_analyses_on_user_id"
+  end
+
+  create_table "bins", force: :cascade do |t|
+    t.string "colour"
+    t.integer "quantity"
+    t.integer "analysis_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["analysis_id"], name: "index_bins_on_analysis_id"
   end
 
   create_table "users", force: :cascade do |t|

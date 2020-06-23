@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get '/new_bin', to: "bins#new"
+  get "/bin_index", to: "bins#index"
   root "sessions#new"
   post '/', to: "sessions#create"
   delete '/logout', to: "sessions#destroy"
