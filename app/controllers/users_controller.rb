@@ -17,11 +17,9 @@ class UsersController < ApplicationController
   def new
     @user = User.new
     @analysis = @user.build_analysis
-    @user.bins.build
-    @user.bins.build
-    @user.bins.build
-    @user.bins.build
-
+    4.times do
+      @user.bins.build
+    end
   end
 
 

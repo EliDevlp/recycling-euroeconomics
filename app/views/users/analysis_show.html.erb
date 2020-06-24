@@ -6,7 +6,7 @@ number 2:  <b><%= @analysis.num2 %></b><br>
 result:  <b><%= calculate(@analysis.num1, @analysis.num2) %></b><br>
 
 
-result:  <b><%= calculate(@bins.find(1).quantity, @bins.find(2).quantity) %></b>
+result:  <b><%= calculate(@bins.find_by(colour: "blue").quantity, @bins.find_by(colour: "red").quantity) %></b>
 <h2>bins</h2>
 
 <table>
